@@ -6,7 +6,8 @@ const PlansShow = ({ plan }) => {
   return (
     plan === null
       ? <PageNotFound />
-      : <div className='mt-5  card col-lg-10 mx-auto'>
+      :
+      <div className='mt-5  card col-lg-10 mx-auto'>
         <div className='card-body'>
           <p>
             <strong><h1 className=' text-center card-title'>{plan.name}</h1></strong>
@@ -16,24 +17,38 @@ const PlansShow = ({ plan }) => {
           </p>
           <p>
             <h3>Features:</h3>
-            <ul className='list-group list-group-flush'>
-              <li className='list-group-item ' style={{ backgroundColor: '#577399' }}>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">name</th>
+                  <th scope="col">code</th>
+                  <th scope="col">unit price</th>
+                  <th scope="col">max unit limit</th>
+                  <th scope="col">usage value</th>
+                  <th scope="col">over use</th>
+                  {/* <th colSpan='3' /> */}
+                </tr>
+              </thead>
+              <tbody>
                 {plan.features.map((feature) => {
-                  return (
-                    <p key={feature.id}>
-                      <ul>
-                        <li>name : {feature.name}</li>
-                        <li> code : {feature.code}</li>
-                        <li>unit price : {feature.unit_price}</li>
-                        <li>max unit limit : {feature.max_unit_limit}</li>
-                        <li>usage value : {feature.usage_value}</li>
-                        <li>over use : {feature.over_use}</li>
-                      </ul>
-                    </p>
-                  )
-                })}
-              </li>
-            </ul>
+                      return (
+
+                        <tr key={feature.id}>
+                            <th scope="row"></th>
+                            <td>{feature.name}</td>
+                            <td>{feature.code}</td>
+                            <td>{feature.unit_price}</td>
+                            <td>{feature.max_unit_limit}</td>
+                            <td>{feature.usage_value}</td>
+                            <td>{feature.over_use}</td>
+
+                        </tr>
+
+                      )
+                    })}
+            </tbody>
+            </table>
           </p>
           <Link to='/'>
             <button className='btn btn-outline-dark btn-sm shadow'>
@@ -41,8 +56,7 @@ const PlansShow = ({ plan }) => {
             </button>
           </Link>
         </div>
-        </div>
-
+      </div>
   )
 }
 
