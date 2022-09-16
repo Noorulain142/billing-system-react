@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { PageNotFound } from '../pages/Error404'
 
 const PlansShow = ({ plan }) => {
   return (
+    plan === null ? <PageNotFound/>:
     <div className='mt-5  card col-lg-10 mx-auto'>
       <div className='card-body'>
         <p>
